@@ -98,6 +98,20 @@ TECH_ASSESSMENT_HINTS = {
     "frontend", "spring", ".net", "c#", "node",
     "data science", "machine learning", "analytics",
     "power bi", "tableau", "excel", "qa", "testing"
+
+
+    # data analytics
+    "data analyst",
+    "business analyst",
+    "analytics",
+    "analysis",
+    "power bi",
+    "tableau",
+    "excel",
+    "reporting",
+    "dashboard",
+    "data science",
+    "machine learning"
 }
 
 
@@ -193,7 +207,7 @@ def score_assessment(assessment, role_type, user_text, extracted_skills):
         if skill in name:
             score += 15
 
-    # Base score
+       # Base score
     if category == "technical":
         score += 10
 
@@ -203,9 +217,27 @@ def score_assessment(assessment, role_type, user_text, extracted_skills):
     if category == "cognitive":
         score += 8
 
-    return score
-     
+    # Role-aware boosts
+    if "data analyst" in user_text or "business analyst" in user_text:
+        if any(word in name for word in [
+            "sql", "excel", "power bi", "tableau",
+            "analytics", "analysis", "data", "cognitive"
+        ]):
+            score += 40
 
+    if "python developer" in user_text or "backend developer" in user_text:
+        if any(word in name for word in [
+            "python", "api", "backend", "aws", "sql"
+        ]):
+            score += 40
+
+    if "sales" in user_text or "manager" in user_text:
+        if any(word in name for word in [
+            "opq", "sales", "leadership", "personality"
+        ]):
+            score += 40
+
+    return score
 
 def get_recommendations(messages, user_name="User"):
     catalog = load_catalog()
