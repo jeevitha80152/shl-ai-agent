@@ -331,7 +331,7 @@ def get_recommendations(messages, user_name="User"):
         }
 
     try:
-        llm_result = extract_hiring_intent(full_conversation)
+        llm_result = extract_hiring_intent(latest_message)
 
         if not isinstance(llm_result, dict):
             llm_result = {}

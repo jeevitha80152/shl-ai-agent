@@ -12,9 +12,8 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 def extract_hiring_intent(user_message):
     prompt = f"""
-You are an AI hiring assistant.
+Extract hiring intent from this query:
 
-Analyze this hiring query:
 "{user_message}"
 
 Return ONLY valid JSON:
@@ -22,8 +21,9 @@ Return ONLY valid JSON:
 {{
   "role_type": "technical OR behavioral OR unknown",
   "role": "job title",
-  "skills": ["skill1", "skill2", "skill3"]
+  "skills": ["skill1", "skill2"]
 }}
+
 
 Examples:
 Technical:
