@@ -255,12 +255,12 @@ def get_recommendations(messages, user_name="User"):
 )
 
     if (
-    "legal" in latest_message
-    or "law" in latest_message
-    or "discrimination" in latest_message
-    or "age" in latest_message
-    or "gender" in latest_message
-    or "religion" in latest_message
+    "legal" in words
+    or "law" in words
+    or "discrimination" in words
+    or "age" in words
+    or "gender" in words
+    or "religion" in words
     or "hire legally" in latest_message
     or "reject candidate" in latest_message
 ):
