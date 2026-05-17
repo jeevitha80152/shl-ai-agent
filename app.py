@@ -1,8 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000/chat"
-
+API_URL = "https://shl-ai-agent-1-22tq.onrender.com/chat"
 st.set_page_config(
     page_title="SHL AI Hiring Assistant",
     page_icon="🎯",
