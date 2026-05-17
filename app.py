@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://shl-ai-agent-v3vn.onrender.com/chat"
+API_URL = "http://127.0.0.1:8000/chat"
 
 st.set_page_config(
     page_title="SHL AI Hiring Assistant",
@@ -141,7 +141,7 @@ if user_input:
     }
 
     with st.chat_message("assistant"):
-        with st.spinner("AI is matching SHL assessments..."):
+        with st.spinner("Typing..."):
             try:
                 response = requests.post(API_URL, json=payload, timeout=20)
                 data = response.json()
@@ -158,8 +158,8 @@ if user_input:
 
                 st.session_state.recommendations = recommendations
 
-            except Exception:
-                st.error("Unable to connect to backend service.")
+            except Exception as e:
+               st.error(str(e))
 
 if st.session_state.recommendations:
     st.markdown('<div class="section-title">Recommended Assessments</div>', unsafe_allow_html=True)
